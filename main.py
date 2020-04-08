@@ -35,7 +35,7 @@ class JtabCommerce(tk.Tk):
 
 # server = smtplib.SMTP('smtp.gmail.com', 587)  # Connect to the server
 # server.starttls()  # Use TLS
-# server.login("jakobpatino@gmail.com", "bigpie77.")  # Login to the email server
+# server.login("jakobpatino@gmail.com", "b********")  # Login to the email server
 # server.sendmail("jakobpatino@gmail.com", "jakobpatino@gmail.com", "Test")  # Send the email
 # server.quit()  # Logout of the email server
 run = JtabCommerce()
