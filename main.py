@@ -1,12 +1,7 @@
 from pages import *
-# import smtplib
 
 
 class JtabCommerce(tk.Tk):
-
-    # email = "jakobpatino@gmail.com"
-    # password = "b********"
-    # send_to_email = "jakobpatino@csu.fullerton.edu"
 
     def __init__(self, *args, **kwargs):
 
@@ -21,7 +16,7 @@ class JtabCommerce(tk.Tk):
 
         self.pages = {}
 
-        for x in (FrontPage, SecondPage):
+        for x in (FrontPage, SecondPage, ThirdPage, FourthPage, FifthPage):
             page = x(container, self)
             self.pages[x] = page
             page.grid(row=0, column=0, sticky="nsew")
