@@ -28,11 +28,6 @@ class JtabCommerce(tk.Tk):
         page.tkraise()
 
 
-# server = smtplib.SMTP('smtp.gmail.com', 587)  # Connect to the server
-# server.starttls()  # Use TLS
-# server.login("jakobpatino@gmail.com", "b********")  # Login to the email server
-# server.sendmail("jakobpatino@gmail.com", "jakobpatino@gmail.com", "Test")  # Send the email
-# server.quit()  # Logout of the email server
 run = JtabCommerce()
 run.geometry("900x700+300+50")
 run.mainloop()
