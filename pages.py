@@ -221,28 +221,29 @@ class FrontPage(tk.Frame):
             self.product2_repopulate()
             self.product3_repopulate()
 
-    def expand(self, num):
-        if num == 0:
-            if self.expand1.cget("text") == "Read More":
-                self.expand1.config(text="Read Less")
-                self.product_brief1.config(text=CURRENT_ITEMS[0].full)
-            elif self.expand1.cget("text") == "Read Less":
-                self.expand1.config(text="Read More")
-                self.product_brief1.config(text=CURRENT_ITEMS[0].brief)
-        elif num == 1:
-            if self.expand2.cget("text") == "Read More":
-                self.expand2.config(text="Read Less")
-                self.product_brief2.config(text=CURRENT_ITEMS[1].full)
-            elif self.expand2.cget("text") == "Read Less":
-                self.expand2.config(text="Read More")
-                self.product_brief2.config(text=CURRENT_ITEMS[1].brief)
-        elif num == 2:
-            if self.expand3.cget("text") == "Read More":
-                self.expand3.config(text="Read Less")
-                self.product_brief3.config(text=CURRENT_ITEMS[2].full)
-            elif self.expand3.cget("text") == "Read Less":
-                self.expand3.config(text="Read More")
-                self.product_brief3.config(text=CURRENT_ITEMS[2].brief)
+    def expand(self, num):                                                #1
+        if num == 0:                                                      #2
+            if self.expand1.cget("text") == "Read More":                  #3
+                self.expand1.config(text="Read Less")                     #4
+                self.product_brief1.config(text=CURRENT_ITEMS[0].full)    #5
+            elif self.expand1.cget("text") == "Read Less":                #6
+                self.expand1.config(text="Read More")                     #7
+                self.product_brief1.config(text=CURRENT_ITEMS[0].brief)   #8
+        elif num == 1:                                                    #9
+            if self.expand2.cget("text") == "Read More":                  #10
+                self.expand2.config(text="Read Less")                     #11
+                self.product_brief2.config(text=CURRENT_ITEMS[1].full)    #12
+            elif self.expand2.cget("text") == "Read Less":                #13
+                self.expand2.config(text="Read More")                     #14
+                self.product_brief2.config(text=CURRENT_ITEMS[1].brief)   #15
+        elif num == 2:                                                    #16
+            if self.expand3.cget("text") == "Read More":                  #17
+                self.expand3.config(text="Read Less")                     #18
+                self.product_brief3.config(text=CURRENT_ITEMS[2].full)    #19
+            elif self.expand3.cget("text") == "Read Less":                #20
+                self.expand3.config(text="Read More")                     #21
+                self.product_brief3.config(text=CURRENT_ITEMS[2].brief)   #22
+                                                                          #23 End Function
 
     def product1_repopulate(self):
         global CURRENT_ITEMS
