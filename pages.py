@@ -3,6 +3,7 @@ import database as db
 import re
 import smtplib
 
+# Global Variables
 TITLE_FONT = ("Courier", 50, "bold")
 SEARCH_BAR_FONT = ("Times", 25)
 SEARCH_BTN_FONT = ("Times", 14)
@@ -12,8 +13,8 @@ PRODUCT_NAME_FONT = ("Times", 12)
 PURCHASE_FONT = ("Times", 16)
 PROMPT_FONT = ("Times", 20)
 ITEMS = []
-db.populate_items(ITEMS)
-db.randomize_items(ITEMS)
+db.populate_items(ITEMS)   # Populate the database
+db.randomize_items(ITEMS)  # Randomize the order of the database list
 CURRENT_ITEMS = ITEMS
 IN_CART = []
 NAME = ""
@@ -22,6 +23,11 @@ TOTAL = ""
 
 
 class FrontPage(tk.Frame):
+    # Front Page Class
+    # Date: 4/5/20
+    # Programmer:
+    # Description: Organizes the front page, search bar and categories functionality, and display items
+    # Data Structures: list
 
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent, bg="#F0FFFF")
@@ -184,16 +190,27 @@ class FrontPage(tk.Frame):
         self.expand3.pack(anchor="sw")
 
     def search_items(self, category):
+        # Search Items
+        # Date: 4/5/20
+        # Programmer:
+        # Description: takes input from search bar or category button and displays
+        #              corresponding items
+        # Data Structures: lists
+
+        # determine search query
         if category is None:
             words = self.search_bar.get()
         else:
             words = category
         global CURRENT_ITEMS
-        CURRENT_ITEMS = []
+        CURRENT_ITEMS = []  # clear current items
+
+        # add product to list based on search
         for x in ITEMS:
             if x.name.lower() == words.lower() or x.tag.lower() == words.lower():
                 CURRENT_ITEMS.append(x)
 
+        # display items based on search query and clear old items
         if len(CURRENT_ITEMS) == 0:
             self.item1_display.pack_forget()
             self.item2_display.pack_forget()
@@ -221,30 +238,39 @@ class FrontPage(tk.Frame):
             self.product2_repopulate()
             self.product3_repopulate()
 
-    def expand(self, num):                                                #1
-        if num == 0:                                                      #2
-            if self.expand1.cget("text") == "Read More":                  #3
-                self.expand1.config(text="Read Less")                     #4
-                self.product_brief1.config(text=CURRENT_ITEMS[0].full)    #5
-            elif self.expand1.cget("text") == "Read Less":                #6
-                self.expand1.config(text="Read More")                     #7
-                self.product_brief1.config(text=CURRENT_ITEMS[0].brief)   #8
-        elif num == 1:                                                    #9
-            if self.expand2.cget("text") == "Read More":                  #10
-                self.expand2.config(text="Read Less")                     #11
-                self.product_brief2.config(text=CURRENT_ITEMS[1].full)    #12
-            elif self.expand2.cget("text") == "Read Less":                #13
-                self.expand2.config(text="Read More")                     #14
-                self.product_brief2.config(text=CURRENT_ITEMS[1].brief)   #15
-        elif num == 2:                                                    #16
-            if self.expand3.cget("text") == "Read More":                  #17
-                self.expand3.config(text="Read Less")                     #18
-                self.product_brief3.config(text=CURRENT_ITEMS[2].full)    #19
-            elif self.expand3.cget("text") == "Read Less":                #20
-                self.expand3.config(text="Read More")                     #21
-                self.product_brief3.config(text=CURRENT_ITEMS[2].brief)   #22
-                                                                          #23 End Function
+    def expand(self, num):
+        # Expand
+        # Date: 4/5/20
+        # Programmer:
+        # Description: shows or hides the full description of an item
+        # Data Structures: N/A
+        if num == 0:
+            if self.expand1.cget("text") == "Read More":
+                self.expand1.config(text="Read Less")
+                self.product_brief1.config(text=CURRENT_ITEMS[0].full)
+            elif self.expand1.cget("text") == "Read Less":
+                self.expand1.config(text="Read More")
+                self.product_brief1.config(text=CURRENT_ITEMS[0].brief)
+        elif num == 1:
+            if self.expand2.cget("text") == "Read More":
+                self.expand2.config(text="Read Less")
+                self.product_brief2.config(text=CURRENT_ITEMS[1].full)
+            elif self.expand2.cget("text") == "Read Less":
+                self.expand2.config(text="Read More")
+                self.product_brief2.config(text=CURRENT_ITEMS[1].brief)
+        elif num == 2:
+            if self.expand3.cget("text") == "Read More":
+                self.expand3.config(text="Read Less")
+                self.product_brief3.config(text=CURRENT_ITEMS[2].full)
+            elif self.expand3.cget("text") == "Read Less":
+                self.expand3.config(text="Read More")
+                self.product_brief3.config(text=CURRENT_ITEMS[2].brief)
 
+    # Product Repopulate 1, 2, and 3
+    # Date: 4/5/20
+    # Programmer:
+    # Description: change the values the templates to match the current products
+    # Data Structures: N/A
     def product1_repopulate(self):
         global CURRENT_ITEMS
         self.product_name1.config(text=CURRENT_ITEMS[0].name)
@@ -277,6 +303,11 @@ class FrontPage(tk.Frame):
 
 
 class SecondPage(tk.Frame):
+    # Second Page Class
+    # Date: 4/6/20
+    # Programmer:
+    # Description: Display items in cart and the total price; modify amount functionality
+    # Data Structures: list
 
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent, bg="#F0FFFF")
@@ -561,12 +592,18 @@ class SecondPage(tk.Frame):
         self.purchase_button.pack(pady="10")
 
     def update_cart(self):
+        # Update Cart
+        # Date: 4/6/20
+        # Programmer:
+        # Description: updates and displays the items currently in the cart
+        # Data Structures: N/A
         global IN_CART
-        IN_CART = []
-        for x in ITEMS:
+        IN_CART = []     # empties cart
+        for x in ITEMS:  # repopulates cart
             if x.in_cart > 0:
                 IN_CART.append(x)
 
+        # displays the updated items in the cart and clears the old ones
         if len(IN_CART) == 0:
             self.cart_item1_display.pack_forget()
             self.cart_item2_display.pack_forget()
@@ -841,6 +878,11 @@ class SecondPage(tk.Frame):
             self.purchase_button.pack(pady="10")
         self.calc_total()
 
+    # Cart Repopulate 1-15
+    # Date: 4/6/20
+    # Programmer:
+    # Description: updates the content in the cart frames
+    # Data Structures: N/A
     def cart1_repopulate(self):
         self.cart_item1_display.pack(fill="x")
         self.cart_item1.config(text=IN_CART[0].name)
@@ -916,6 +958,11 @@ class SecondPage(tk.Frame):
         self.cart_item15.config(text=IN_CART[14].name)
         self.amount15.config(text=IN_CART[14].in_cart)
 
+    # Increase and Decrease
+    # Date: 4/6/20
+    # Programmer:
+    # Description: increments and decrements the count of items in cart
+    # Data Structures: list
     def increase(self, name):
         for x in ITEMS:
             if x.name == name:
@@ -928,6 +975,11 @@ class SecondPage(tk.Frame):
                 x.in_cart -= 1
         self.update_cart()
 
+    # Update Cart
+    # Date: 4/6/20
+    # Programmer:
+    # Description: calculates the price total of all items in cart and displays it
+    # Data Structures: list
     def calc_total(self):
         global TOTAL
         total = 0
@@ -938,6 +990,11 @@ class SecondPage(tk.Frame):
 
 
 class ThirdPage(tk.Frame):
+    # Third Page
+    # Date: 4/7/20
+    # Programmer:
+    # Description: displays payment card prompt and takes input
+    # Data Structures: N/A
 
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent, bg="#F0FFFF")
@@ -1011,6 +1068,11 @@ class ThirdPage(tk.Frame):
                                                           self.clear_entry()])
         self.continue_button.pack(pady="10")
 
+    # Check error and Check card input
+    # Date: 4/7/20
+    # Programmer:
+    # Description: Checks for valid input for the payment card
+    # Data Structures: N/A
     def check_error(self, controller):
         card1 = self.card_number_entry1.get()
         card2 = self.card_number_entry2.get()
@@ -1022,6 +1084,7 @@ class ThirdPage(tk.Frame):
 
         cvv = self.cvv_entry.get()
 
+        # checks for correct amount of numbers entered in each field
         if (self.check_card_valid(card1, 4) and self.check_card_valid(card2, 4)
             and self.check_card_valid(card3, 4) and self.check_card_valid(card4, 4)
                 and self.check_card_valid(expiration1, 2) and self.check_card_valid(expiration2, 2)
@@ -1029,10 +1092,11 @@ class ThirdPage(tk.Frame):
             self.error.config(text=" ")
             controller.show_page(FourthPage)
         else:
-            self.error.config(text="Input Valid Card Info")
+            self.error.config(text="Input Valid Card Info")  # error prompt
         return 0
 
     def check_card_valid(self, length, num):
+        # checks if only numbers entered
         if not len(length) == num:
             return False
         for x in length:
@@ -1040,6 +1104,11 @@ class ThirdPage(tk.Frame):
                 return False
         return True
 
+    # Clear Entry
+    # Date: 4/7/20
+    # Programmer:
+    # Description: Clears entry fields
+    # Data Structures: N/A
     def clear_entry(self):
         self.card_number_entry1.delete(0, "end")
         self.card_number_entry2.delete(0, "end")
@@ -1051,6 +1120,11 @@ class ThirdPage(tk.Frame):
 
 
 class FourthPage(tk.Frame):
+    # Fourth Page
+    # Date: 4/7/20
+    # Programmer:
+    # Description: displays personal info prompt and takes input
+    # Data Structures: N/A
 
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent, bg="#F0FFFF")
@@ -1137,9 +1211,15 @@ class FourthPage(tk.Frame):
         self.finish_button.pack(pady="10")
 
     def check_valid(self, controller):
+        # Check Valid
+        # Date: 4/7/20
+        # Programmer:
+        # Description: checks if entered email is formatted correctly
+        # Data Structures: N/A
         email = self.email_entry.get()
         valid = "^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
 
+        # checks for every input field filled in
         if (re.search(valid, email) and len(self.name_entry.get()) > 0
                 and len(self.street_entry.get()) > 0 and len(self.city_entry.get()) > 0
                 and len(self.zip_entry.get()) > 0 and len(self.state_entry.get()) > 0):
@@ -1151,6 +1231,11 @@ class FourthPage(tk.Frame):
             self.error.config(text="Input Valid Email")
 
     def clear_entry(self):
+        # Clear Entry
+        # Date: 4/7/20
+        # Programmer:
+        # Description: clears all input fields
+        # Data Structures: N/A
         self.name_entry.delete(0, "end")
         self.email_entry.delete(0, "end")
         self.street_entry.delete(0, "end")
@@ -1159,12 +1244,22 @@ class FourthPage(tk.Frame):
         self.state_entry.delete(0, "end")
 
     def save_name_and_email(self):
+        # Save Name and Email
+        # Date: 4/7/20
+        # Programmer:
+        # Description: saves name and email in global variable for later use
+        # Data Structures: N/A
         global NAME
         global EMAIL
         NAME = self.name_entry.get()
         EMAIL = self.email_entry.get()
 
     def send_email(self):
+        # Send Email
+        # Date: 4/7/20
+        # Programmer:
+        # Description: sends a conformation email to user
+        # Data Structures: N/A
         sender = "jtabecommerce@gmail.com"
         password = "password362"
         server = smtplib.SMTP('smtp.gmail.com', 587)  # Connect to the server
@@ -1175,6 +1270,11 @@ class FourthPage(tk.Frame):
 
 
 class FifthPage(tk.Frame):
+    # Fifth Page
+    # Date: 4/7/20
+    # Programmer:
+    # Description: displays a thank you message
+    # Data Structures: N/A
 
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent, bg="#F0FFFF")
@@ -1206,5 +1306,10 @@ class FifthPage(tk.Frame):
         self.prompt.pack()
 
     def clear_cart(self):
+        # Clear Cart
+        # Date: 4/7/20
+        # Programmer:
+        # Description: Empties all the items in the cart
+        # Data Structures: list
         for x in ITEMS:
             x.in_cart = 0
