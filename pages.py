@@ -25,7 +25,7 @@ TOTAL = ""
 class FrontPage(tk.Frame):
     # Front Page Class
     # Date: 4/5/20
-    # Programmer:
+    # Programmer: Jakob
     # Description: Organizes the front page, search bar and categories functionality, and display items
     # Data Structures: list
 
@@ -192,7 +192,7 @@ class FrontPage(tk.Frame):
     def search_items(self, category):
         # Search Items
         # Date: 4/5/20
-        # Programmer:
+        # Programmer: Jakob
         # Description: takes input from search bar or category button and displays
         #              corresponding items
         # Data Structures: lists
@@ -241,7 +241,7 @@ class FrontPage(tk.Frame):
     def expand(self, num):
         # Expand
         # Date: 4/5/20
-        # Programmer:
+        # Programmer: Jakob
         # Description: shows or hides the full description of an item
         # Data Structures: N/A
         if num == 0:
@@ -268,7 +268,7 @@ class FrontPage(tk.Frame):
 
     # Product Repopulate 1, 2, and 3
     # Date: 4/5/20
-    # Programmer:
+    # Programmer: Jakob
     # Description: change the values the templates to match the current products
     # Data Structures: N/A
     def product1_repopulate(self):
@@ -305,7 +305,7 @@ class FrontPage(tk.Frame):
 class SecondPage(tk.Frame):
     # Second Page Class
     # Date: 4/6/20
-    # Programmer:
+    # Programmer: Ares
     # Description: Display items in cart and the total price; modify amount functionality
     # Data Structures: list
 
@@ -594,7 +594,7 @@ class SecondPage(tk.Frame):
     def update_cart(self):
         # Update Cart
         # Date: 4/6/20
-        # Programmer:
+        # Programmer: Ares
         # Description: updates and displays the items currently in the cart
         # Data Structures: N/A
         global IN_CART
@@ -880,7 +880,7 @@ class SecondPage(tk.Frame):
 
     # Cart Repopulate 1-15
     # Date: 4/6/20
-    # Programmer:
+    # Programmer: Ares
     # Description: updates the content in the cart frames
     # Data Structures: N/A
     def cart1_repopulate(self):
@@ -960,7 +960,7 @@ class SecondPage(tk.Frame):
 
     # Increase and Decrease
     # Date: 4/6/20
-    # Programmer:
+    # Programmer: Bradley
     # Description: increments and decrements the count of items in cart
     # Data Structures: list
     def increase(self, name):
@@ -977,7 +977,7 @@ class SecondPage(tk.Frame):
 
     # Update Cart
     # Date: 4/6/20
-    # Programmer:
+    # Programmer: Tony
     # Description: calculates the price total of all items in cart and displays it
     # Data Structures: list
     def calc_total(self):
@@ -992,7 +992,7 @@ class SecondPage(tk.Frame):
 class ThirdPage(tk.Frame):
     # Third Page
     # Date: 4/7/20
-    # Programmer:
+    # Programmer: Bradley
     # Description: displays payment card prompt and takes input
     # Data Structures: N/A
 
@@ -1070,7 +1070,7 @@ class ThirdPage(tk.Frame):
 
     # Check error and Check card input
     # Date: 4/7/20
-    # Programmer:
+    # Programmer: Bradley
     # Description: Checks for valid input for the payment card
     # Data Structures: N/A
     def check_error(self, controller):
@@ -1106,7 +1106,7 @@ class ThirdPage(tk.Frame):
 
     # Clear Entry
     # Date: 4/7/20
-    # Programmer:
+    # Programmer: Bradley
     # Description: Clears entry fields
     # Data Structures: N/A
     def clear_entry(self):
@@ -1122,7 +1122,7 @@ class ThirdPage(tk.Frame):
 class FourthPage(tk.Frame):
     # Fourth Page
     # Date: 4/7/20
-    # Programmer:
+    # Programmer: Tony
     # Description: displays personal info prompt and takes input
     # Data Structures: N/A
 
@@ -1213,7 +1213,7 @@ class FourthPage(tk.Frame):
     def check_valid(self, controller):
         # Check Valid
         # Date: 4/7/20
-        # Programmer:
+        # Programmer: Tony
         # Description: checks if entered email is formatted correctly
         # Data Structures: N/A
         email = self.email_entry.get()
@@ -1233,7 +1233,7 @@ class FourthPage(tk.Frame):
     def clear_entry(self):
         # Clear Entry
         # Date: 4/7/20
-        # Programmer:
+        # Programmer: Tony
         # Description: clears all input fields
         # Data Structures: N/A
         self.name_entry.delete(0, "end")
@@ -1246,7 +1246,7 @@ class FourthPage(tk.Frame):
     def save_name_and_email(self):
         # Save Name and Email
         # Date: 4/7/20
-        # Programmer:
+        # Programmer: Tony
         # Description: saves name and email in global variable for later use
         # Data Structures: N/A
         global NAME
@@ -1257,7 +1257,7 @@ class FourthPage(tk.Frame):
     def send_email(self):
         # Send Email
         # Date: 4/7/20
-        # Programmer:
+        # Programmer: Jakob
         # Description: sends a conformation email to user
         # Data Structures: N/A
         sender = "jtabecommerce@gmail.com"
@@ -1272,7 +1272,7 @@ class FourthPage(tk.Frame):
 class FifthPage(tk.Frame):
     # Fifth Page
     # Date: 4/7/20
-    # Programmer:
+    # Programmer: Jakob
     # Description: displays a thank you message
     # Data Structures: N/A
 
@@ -1308,7 +1308,7 @@ class FifthPage(tk.Frame):
     def clear_cart(self):
         # Clear Cart
         # Date: 4/7/20
-        # Programmer:
+        # Programmer: Jakob
         # Description: Empties all the items in the cart
         # Data Structures: list
         for x in ITEMS:

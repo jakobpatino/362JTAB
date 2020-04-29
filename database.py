@@ -4,7 +4,7 @@ import random
 class Database:
     # Database Class
     # Date: 4/5/20
-    # Programmer:
+    # Programmer: Tony
     # Description: keeps track of all data for an item that will be in the database
     # Data Structures: N/A
 
@@ -21,7 +21,7 @@ class Database:
 def populate_items(list_of_items):
     # Populate Items Module
     # Date: 4/5/20
-    # Programmer:
+    # Programmer: Tony
     # Description: creates all items in the database and adds them to the list
     # Data Structures: list
 
@@ -104,7 +104,7 @@ def populate_items(list_of_items):
 def randomize_items(items):
     # Randomize Items
     # Date: 4/5/20
-    # Programmer:
+    # Programmer: Tony
     # Description: shuffle database items in the list
     # Data Structures: list
 

@@ -4,7 +4,7 @@ from pages import *
 class JtabCommerce(tk.Tk):
     # JTAB Commerce Class
     # Date: 4/4/20
-    # Programmer:
+    # Programmer: Jakob
     # Description: manages the whole program window and switches between pages
     # Data Structures: dictionary
 
@@ -33,7 +33,7 @@ class JtabCommerce(tk.Tk):
     def show_page(self, controller):
         # Show Page
         # Date: 4/4/20
-        # Programmer:
+        # Programmer: Jakob
         # Description: switches between individual pages in the dictionary and brings them to the front
         # Data Structures: dictionary
         page = self.pages[controller]
